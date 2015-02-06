@@ -8,7 +8,7 @@ while files or workers:
     while len(workers) < 4 and files:
         f = files[0]
         files = files[1:]
-        w = subprocess.Popen(['xvfb-run ebook-convert', f,
+        w = subprocess.Popen(['ebook-convert', f,
             os.path.splitext(f)[0]+'.mobi'])
         workers.append(w)
     for w in list(workers):
