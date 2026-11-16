@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 import os, time, glob, subprocess
 
 files = glob.glob('*.epub')
@@ -6,8 +6,7 @@ files = glob.glob('*.epub')
 workers = []
 while files or workers:
     while len(workers) < 4 and files:
-        f = files[0]
-        files = files[1:]
+        f = files.pop(0)
         w = subprocess.Popen(['ebook-convert', f,
             os.path.splitext(f)[0]+'.mobi'])
         workers.append(w)
